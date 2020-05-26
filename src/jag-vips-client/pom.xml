@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ca.bc.gov.open</groupId>
 	<artifactId>jag-vips-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>jag-vips-client</name>
 	<description>A java client for vips database</description>
 
@@ -21,7 +21,7 @@
 		<maven-plugin-version>1.0.0</maven-plugin-version>
 		<io.swagger.version>1.5.22</io.swagger.version>
 		<org.glassfish.jersey.version>2.29</org.glassfish.jersey.version>
-		<com.fasterxml.jackson.version>2.9.9</com.fasterxml.jackson.version>
+		<com.fasterxml.jackson.version>2.11.0</com.fasterxml.jackson.version>
 	</properties>
 
 	<dependencies>

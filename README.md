@@ -27,7 +27,7 @@ vips.client.basePath=path-to-order
 vips.client.username=username
 vips.client.password=password
 ```
-## Openshift Implementation
+## Openshift and Nexus Integration
 
 After implementing your Openshift pipeline, you'll want to add the following env vars:
 

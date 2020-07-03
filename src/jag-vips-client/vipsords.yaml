@@ -77,6 +77,28 @@ paths:
         schema:
           type: string
           format: binary
+  /prohibitionInfo/{noticeNo}:
+    get:
+      tags:
+      - ProhibitionStatus
+      security:
+      - basicAuth: []
+      description: Get prohibition status information
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/vipsProhibitionStatusOrdsResponse'
+        '400':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/errorMessage'   
+      parameters:
+      - name: noticeNo
+        in: path
+        required: true
+        type: string
+        description: Implicit paramater
 definitions:
   healthOrdsResponse:
     type: object
@@ -110,6 +132,31 @@ definitions:
         type: string
       status_message:
         type: string
+  vipsProhibitionStatusOrdsResponse:
+    type: object
+    required: 
+    - effective_date
+    - driver_licence_seized_yn
+    - driver_last_name
+    - review_status
+    - cancelled_yn
+    - status_code
+    - status_message
+    properties:
+      effective_date:
+        type: string
+      driver_licence_seized_yn:
+        type: string
+      driver_last_name:
+        type: string
+      review_status: 
+        type: string
+      cancelled_yn: 
+        type: string
+      status_code:
+        type: string
+      status_message: 
+        type: string            
   errorMessage:
     type: object
     required:

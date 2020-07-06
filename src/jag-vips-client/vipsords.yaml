@@ -140,8 +140,8 @@ definitions:
     - driver_last_name
     - review_status
     - cancelled_yn
-    - status_code
-    - status_message
+    - result_code
+    - result_message
     properties:
       effective_date:
         type: string
@@ -153,9 +153,9 @@ definitions:
         type: string
       cancelled_yn: 
         type: string
-      status_code:
+      result_code:
         type: string
-      status_message: 
+      result_message: 
         type: string            
   errorMessage:
     type: object

@@ -41,7 +41,7 @@ public class ProhibitionServiceImpl implements ProhibitionService{
 			 status.setReviewStatus(response.getReviewStatus());
 			 status.setCancelledYn(response.getCancelledYn());
 			 
-	         return  VipsProhibitionStatusResponse.successResponse(status, response.getStatusCode(), response.getStatusMessage());
+	         return  VipsProhibitionStatusResponse.successResponse(status, response.getResultCode(), response.getResultMessage());
 
 	        } catch (ApiException ex) {
 	        	ex.printStackTrace();

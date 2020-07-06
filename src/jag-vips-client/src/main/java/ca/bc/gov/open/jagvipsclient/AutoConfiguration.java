@@ -2,11 +2,15 @@ package ca.bc.gov.open.jagvipsclient;
 
 import ca.bc.gov.open.jag.ordsvipsclient.api.DocumentApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.HealthApi;
+import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiClient;
 import ca.bc.gov.open.jagvipsclient.document.DocumentService;
 import ca.bc.gov.open.jagvipsclient.document.DocumentServiceImpl;
 import ca.bc.gov.open.jagvipsclient.health.HealthService;
 import ca.bc.gov.open.jagvipsclient.health.HealthServiceImpl;
+import ca.bc.gov.open.jagvipsclient.prohibition.ProhibitionService;
+import ca.bc.gov.open.jagvipsclient.prohibition.ProhibitionServiceImpl;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -46,6 +50,16 @@ public class AutoConfiguration {
     @Bean
     public DocumentService documentService(DocumentApi documentApi) {
         return new DocumentServiceImpl(documentApi);
+    }
+    
+    @Bean
+    public ProhibitionStatusApi prohibitionStatusApi(ApiClient apiClient) {
+        return new ProhibitionStatusApi(apiClient);
+    }
+
+    @Bean
+    public ProhibitionService prohibitionService(ProhibitionStatusApi prohibitionStatusApi) {
+        return new ProhibitionServiceImpl(prohibitionStatusApi);
     }
 
     @Bean

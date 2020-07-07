@@ -24,6 +24,22 @@
 		<com.fasterxml.jackson.version>2.11.0</com.fasterxml.jackson.version>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>openshift</id>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>nexus-snapshots</id>
+					<url>${env.NEXUS_SNAPSHOTS_URL}</url>
+				</snapshotRepository>
+				<repository>
+					<id>nexus-releases</id>
+					<url>${env.NEXUS_RELEASES_URL}</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+
 	<dependencies>
 
 		<dependency>

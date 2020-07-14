@@ -98,7 +98,7 @@ paths:
         in: path
         required: true
         type: string
-        description: Implicit paramater
+        description: Implicit parameter
   /paymentStatus/{noticeNo}:
     get:
       tags:
@@ -120,7 +120,34 @@ paths:
         in: path
         required: true
         type: string
-        description: Implicit paramater
+        description: Implicit parameter
+  /payment/{noticeNo}:
+    post:
+      tags:
+      - Payment
+      security:
+      - basicAuth: []
+      description: Update payment details
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/vipsPaymentOrdsResponse'
+        '400':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/errorMessage'
+      parameters:
+      - name: noticeNo
+        in: path
+        required: true
+        type: string
+        description: Implicit parameter
+      - name: payload
+        in: body
+        required: true
+        schema:
+          "$ref": "#/definitions/vipsPaymentPostRequest"
 definitions:
   healthOrdsResponse:
     type: object
@@ -179,16 +206,6 @@ definitions:
         type: string
       result_message: 
         type: string            
-  errorMessage:
-    type: object
-    required:
-    - status_code
-    - status_message
-    properties:
-      status_code:
-        type: string
-      status_message:
-        type: string
   vipsPaymentStatusOrdsResponse:
     type: object
     required: 
@@ -201,7 +218,27 @@ definitions:
       result_code:
         type: string
       result_message: 
-        type: string            
+        type: string 
+  vipsPaymentPostRequest:
+    type: object
+    required:
+    - card_type
+    - total_price
+    properties:
+      card_type:
+        type: string
+      total_price:
+        type: string
+  vipsPaymentOrdsResponse:
+    type: object
+    required:
+    - status_code
+    - status_message
+    properties:
+      status_code:
+        type: string
+      status_message:
+        type: string           
   errorMessage:
     type: object
     required:
@@ -212,4 +249,3 @@ definitions:
         type: string
       status_message:
         type: string
-

@@ -7,26 +7,26 @@ import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
 
 /**
  *
- * Represents the VIPS Payment status Response
+ * Represents the VIPS Payment service Response
  *
  * @author sivakaruna
  * 
  */
-@JacksonXmlRootElement(localName = "vipsPaymentStatusResponse")
+@JacksonXmlRootElement(localName = "vipsPaymentResponse")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class VipsPaymentStatusResponse {
+public class VipsPaymentResponse {
 
 	private PaymentStatus status;
 	private int respCode;
 	private String respMsg;
 
-	private VipsPaymentStatusResponse(PaymentStatus status, int respCode, String respMsg) {
+	private VipsPaymentResponse(PaymentStatus status, int respCode, String respMsg) {
 		this.status = status;
 		this.respCode = respCode;
 		this.respMsg = respMsg;
 	}
 
-	private VipsPaymentStatusResponse(int respCode, String respMsg) {
+	private VipsPaymentResponse(int respCode, String respMsg) {
 		this.respCode = respCode;
 		this.respMsg = respMsg;
 	}
@@ -51,12 +51,15 @@ public class VipsPaymentStatusResponse {
 		this.respMsg = respMsg;
 	}
 
-	public static VipsPaymentStatusResponse errorResponse(String errorMessage) {
-		return new VipsPaymentStatusResponse(VipsOrdsClientConstants.SERVICE_FAILURE_CD, errorMessage);
+	public static VipsPaymentResponse errorResponse(String errorMessage) {
+		return new VipsPaymentResponse(VipsOrdsClientConstants.SERVICE_FAILURE_CD, errorMessage);
+	}
+	
+	public static VipsPaymentResponse successResponse(String respCodeStr, String respMsg) {
+		return new VipsPaymentResponse(Integer.parseInt(respCodeStr), respMsg);
 	}
 
-	public static VipsPaymentStatusResponse successResponse(PaymentStatus status, String respCodeStr, String respMsg) {
-		return new VipsPaymentStatusResponse(status, Integer.parseInt(respCodeStr), respMsg);
+	public static VipsPaymentResponse successStatusResponse(PaymentStatus status, String respCodeStr, String respMsg) {
+		return new VipsPaymentResponse(status, Integer.parseInt(respCodeStr), respMsg);
 	}
-
 }

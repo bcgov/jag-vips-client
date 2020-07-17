@@ -4,94 +4,123 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+/**
+ * 
+ * @author shaunmillargov
+ *
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "effectiveDate", "driverLicenceSeizedYn", "driverLastName", "reviewStatus", "cancelledYn",
-		"resultCode", "resultMessage" })
+@JsonPropertyOrder({ "noticeTypeCd", "effectiveDt", "reviewFormSubmittedYn",
+		"reviewCreatedYn", "originalCause", "surnameNm", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt" })
 public class ProhibitionStatus {
+	
+	@JsonProperty("noticeTypeCd")
+	private String noticeTypeCd;
+	@JsonProperty("effectiveDt")
+	private String effectiveDt;
+	@JsonProperty("reviewFormSubmittedYn")
+	private String reviewFormSubmittedYn;
+	@JsonProperty("reviewCreatedYn")
+	private String reviewCreatedYn;
+	@JsonProperty("originalCause")
+	private String originalCause;
+	@JsonProperty("surnameNm")
+	private String surnameNm;
+	@JsonProperty("reviewStartDtm")
+	private String reviewStartDtm;
+	@JsonProperty("reviewEndDtm")
+	private String reviewEndDtm;
+	@JsonProperty("receiptNumberTxt")
+	private String receiptNumberTxt;
 
-	@JsonProperty("effectiveDate")
-	private String effectiveDate;
-	@JsonProperty("driverLicenceSeizedYn")
-	private String driverLicenceSeizedYn;
-	@JsonProperty("driverLastName")
-	private String driverLastName;
-	@JsonProperty("reviewStatus")
-	private String reviewStatus;
-	@JsonProperty("cancelledYn")
-	private String cancelledYn;
-	@JsonProperty("resultCode")
-	private String resultCode;
-	@JsonProperty("resultMessage")
-	private String resultMessage;
-
-	@JsonProperty("effectiveDate")
-	public String getEffectiveDate() {
-		return effectiveDate;
+	@JsonProperty("noticeTypeCd")
+	public String getNoticeTypeCd() {
+		return noticeTypeCd;
 	}
 
-	@JsonProperty("effectiveDate")
-	public void setEffectiveDate(String effectiveDate) {
-		this.effectiveDate = effectiveDate;
+	@JsonProperty("noticeTypeCd")
+	public void setNoticeTypeCd(String noticeTypeCd) {
+		this.noticeTypeCd = noticeTypeCd;
 	}
 
-	@JsonProperty("driverLicenceSeizedYn")
-	public String getDriverLicenceSeizedYn() {
-		return driverLicenceSeizedYn;
+	@JsonProperty("effectiveDt")
+	public String getEffectiveDt() {
+		return effectiveDt;
 	}
 
-	@JsonProperty("driverLicenceSeizedYn")
-	public void setDriverLicenceSeizedYn(String driverLicenceSeizedYn) {
-		this.driverLicenceSeizedYn = driverLicenceSeizedYn;
+	@JsonProperty("effectiveDt")
+	public void setEffectiveDt(String effectiveDt) {
+		this.effectiveDt = effectiveDt;
 	}
 
-	@JsonProperty("driverLastName")
-	public String getDriverLastName() {
-		return driverLastName;
+	@JsonProperty("reviewFormSubmittedYn")
+	public String getReviewFormSubmittedYn() {
+		return reviewFormSubmittedYn;
 	}
 
-	@JsonProperty("driverLastName")
-	public void setDriverLastName(String driverLastName) {
-		this.driverLastName = driverLastName;
+	@JsonProperty("reviewFormSubmittedYn")
+	public void setReviewFormSubmittedYn(String reviewFormSubmittedYn) {
+		this.reviewFormSubmittedYn = reviewFormSubmittedYn;
 	}
 
-	@JsonProperty("reviewStatus")
-	public String getReviewStatus() {
-		return reviewStatus;
+	@JsonProperty("reviewCreatedYn")
+	public String getReviewCreatedYn() {
+		return reviewCreatedYn;
 	}
 
-	@JsonProperty("reviewStatus")
-	public void setReviewStatus(String reviewStatus) {
-		this.reviewStatus = reviewStatus;
+	@JsonProperty("reviewCreatedYn")
+	public void setReviewCreatedYn(String reviewCreatedYn) {
+		this.reviewCreatedYn = reviewCreatedYn;
 	}
 
-	@JsonProperty("cancelledYn")
-	public String getCancelledYn() {
-		return cancelledYn;
+	@JsonProperty("originalCause")
+	public String getOriginalCause() {
+		return originalCause;
 	}
 
-	@JsonProperty("cancelledYn")
-	public void setCancelledYn(String cancelledYn) {
-		this.cancelledYn = cancelledYn;
+	@JsonProperty("originalCause")
+	public void setOriginalCause(String originalCause) {
+		this.originalCause = originalCause;
 	}
 
-	@JsonProperty("resultCode")
-	public String getResultCode() {
-		return resultCode;
+	@JsonProperty("surnameNm")
+	public String getSurnameNm() {
+		return surnameNm;
 	}
 
-	@JsonProperty("resultCode")
-	public void setResultCode(String resultCode) {
-		this.resultCode = resultCode;
+	@JsonProperty("surnameNm")
+	public void setSurnameNm(String surnameNm) {
+		this.surnameNm = surnameNm;
 	}
 
-	@JsonProperty("resultMessage")
-	public String getResultMessage() {
-		return resultMessage;
+	@JsonProperty("reviewStartDtm")
+	public String getReviewStartDtm() {
+		return reviewStartDtm;
 	}
 
-	@JsonProperty("resultMessage")
-	public void setResultMessage(String resultMessage) {
-		this.resultMessage = resultMessage;
+	@JsonProperty("reviewStartDtm")
+	public void setReviewStartDtm(String reviewStartDtm) {
+		this.reviewStartDtm = reviewStartDtm;
+	}
+
+	@JsonProperty("reviewEndDtm")
+	public String getReviewEndDtm() {
+		return reviewEndDtm;
+	}
+
+	@JsonProperty("reviewEndDtm")
+	public void setReviewEndDtm(String reviewEndDtm) {
+		this.reviewEndDtm = reviewEndDtm;
+	}
+
+	@JsonProperty("receiptNumberTxt")
+	public String getReceiptNumberTxt() {
+		return receiptNumberTxt;
+	}
+
+	@JsonProperty("receiptNumberTxt")
+	public void setReceiptNumberTxt(String receiptNumberTxt) {
+		this.receiptNumberTxt = receiptNumberTxt;
 	}
 
 }

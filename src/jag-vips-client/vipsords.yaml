@@ -77,7 +77,7 @@ paths:
         schema:
           type: string
           format: binary
-  /prohibitionInfo/{noticeNo}:
+  /prohibitionStatus/{noticeNo}:
     get:
       tags:
       - ProhibitionStatus
@@ -184,27 +184,39 @@ definitions:
   vipsProhibitionStatusOrdsResponse:
     type: object
     required: 
-    - effective_date
-    - driver_licence_seized_yn
-    - driver_last_name
-    - review_status
-    - cancelled_yn
-    - result_code
-    - result_message
+    - status_code
+    - status_message
+    - notice_type_cd
+    - effective_dt
+    - review_form_submitted_yn
+    - review_created_yn
+    - original_cause
+    - surname_nm
+    - review_start_tm
+    - review_end_tm
+    - receipt_number_txt
     properties:
-      effective_date:
+      status_code:
         type: string
-      driver_licence_seized_yn:
+      status_message:
         type: string
-      driver_last_name:
+      notice_type_cd:
         type: string
-      review_status: 
+      effective_dt:
         type: string
-      cancelled_yn: 
+      review_form_submitted_yn:
         type: string
-      result_code:
+      review_created_yn:
         type: string
-      result_message: 
+      original_cause:
+        type: string
+      surname_nm:
+        type: string
+      review_start_tm:
+        type: string
+      review_end_tm:
+        type: string
+      receipt_number_txt:
         type: string            
   vipsPaymentStatusOrdsResponse:
     type: object

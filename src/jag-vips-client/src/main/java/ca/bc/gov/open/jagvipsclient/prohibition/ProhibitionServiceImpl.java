@@ -32,16 +32,21 @@ public class ProhibitionServiceImpl implements ProhibitionService{
 			 String noticeNo = Long.toString(prohibitionNoticeNo);
 			 
 			 // Here what we're doing is a conversion from the actual response to a properly camelCased JSON response.  
-			 VipsProhibitionStatusOrdsResponse response = this.prohibStatusApi.prohibitionInfoNoticeNoGet(noticeNo);
+			 VipsProhibitionStatusOrdsResponse response = this.prohibStatusApi.prohibitionStatusNoticeNoGet(noticeNo);
 			 
 			 ProhibitionStatus status = new ProhibitionStatus();
-			 status.setEffectiveDate(response.getEffectiveDate());
-			 status.setDriverLicenceSeizedYn(response.getDriverLicenceSeizedYn());
-			 status.setDriverLastName(response.getDriverLastName());
-			 status.setReviewStatus(response.getReviewStatus());
-			 status.setCancelledYn(response.getCancelledYn());
 			 
-	         return  VipsProhibitionStatusResponse.successResponse(status, response.getResultCode(), response.getResultMessage());
+			 status.setNoticeTypeCd(response.getNoticeTypeCd());
+			 status.setEffectiveDt(response.getEffectiveDt());
+			 status.setReviewFormSubmittedYn(response.getReviewFormSubmittedYn());
+			 status.setReviewCreatedYn(response.getReviewCreatedYn());
+			 status.setOriginalCause(response.getOriginalCause());
+			 status.setSurnameNm(response.getSurnameNm());
+			 status.setReviewStartDtm(response.getReviewStartTm());
+			 status.setReviewEndDtm(response.getReviewEndTm());
+			 status.setReceiptNumberTxt(response.getReceiptNumberTxt());
+			 
+	         return  VipsProhibitionStatusResponse.successResponse(status, response.getStatusCode(), response.getStatusMessage());
 
 	        } catch (ApiException ex) {
 	        	ex.printStackTrace();

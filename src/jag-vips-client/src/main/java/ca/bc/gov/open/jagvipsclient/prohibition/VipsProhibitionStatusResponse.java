@@ -20,13 +20,13 @@ public class VipsProhibitionStatusResponse {
 	private int respCode;
 	private String respMsg;
 	
-	private VipsProhibitionStatusResponse(ProhibitionStatus status, int respCode, String respMsg) {
+	public VipsProhibitionStatusResponse(ProhibitionStatus status, int respCode, String respMsg) {
 		this.status = status; 
 		this.respCode = respCode;
 		this.respMsg = respMsg;
 	}
 
-	private VipsProhibitionStatusResponse(int respCode, String respMsg) {
+	public VipsProhibitionStatusResponse(int respCode, String respMsg) {
 		this.respCode = respCode;
 		this.respMsg = respMsg;
 	}

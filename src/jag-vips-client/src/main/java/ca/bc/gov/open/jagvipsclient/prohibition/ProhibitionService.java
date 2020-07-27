@@ -9,6 +9,6 @@ package ca.bc.gov.open.jagvipsclient.prohibition;
  */
 public interface ProhibitionService {
 
-     VipsProhibitionStatusResponse getVipsProhibitionStatus(Long prohibitionId);
+     VipsProhibitionStatusResponse getVipsProhibitionStatus(String prohibitionId);
 
 }

@@ -25,14 +25,12 @@ public class ProhibitionServiceImpl implements ProhibitionService{
     }
 
 	@Override
-	public VipsProhibitionStatusResponse getVipsProhibitionStatus(Long prohibitionNoticeNo) {
+	public VipsProhibitionStatusResponse getVipsProhibitionStatus(String prohibitionNoticeNo) {
 		
 		 try {
 			 
-			 String noticeNo = Long.toString(prohibitionNoticeNo);
-			 
 			 // Here what we're doing is a conversion from the actual response to a properly camelCased JSON response.  
-			 VipsProhibitionStatusOrdsResponse response = this.prohibStatusApi.prohibitionStatusNoticeNoGet(noticeNo);
+			 VipsProhibitionStatusOrdsResponse response = this.prohibStatusApi.prohibitionStatusNoticeNoGet(prohibitionNoticeNo);
 			 
 			 ProhibitionStatus status = new ProhibitionStatus();
 			 

@@ -99,55 +99,6 @@ paths:
         required: true
         type: string
         description: Implicit parameter
-  /paymentStatus/{noticeNo}:
-    get:
-      tags:
-      - PaymentStatus
-      security:
-      - basicAuth: []
-      description: Get payment status information
-      responses:
-        '200':
-          description: output of the endpoint
-          schema:
-            $ref: '#/definitions/vipsPaymentStatusOrdsResponse'
-        '400':
-          description: output of the endpoint
-          schema:
-            $ref: '#/definitions/errorMessage'   
-      parameters:
-      - name: noticeNo
-        in: path
-        required: true
-        type: string
-        description: Implicit parameter
-  /payment/{noticeNo}:
-    post:
-      tags:
-      - Payment
-      security:
-      - basicAuth: []
-      description: Update payment details
-      responses:
-        '200':
-          description: output of the endpoint
-          schema:
-            $ref: '#/definitions/vipsPaymentOrdsResponse'
-        '400':
-          description: output of the endpoint
-          schema:
-            $ref: '#/definitions/errorMessage'
-      parameters:
-      - name: noticeNo
-        in: path
-        required: true
-        type: string
-        description: Implicit parameter
-      - name: payload
-        in: body
-        required: true
-        schema:
-          "$ref": "#/definitions/vipsPaymentPostRequest"
 definitions:
   healthOrdsResponse:
     type: object
@@ -217,40 +168,7 @@ definitions:
       review_end_tm:
         type: string
       receipt_number_txt:
-        type: string            
-  vipsPaymentStatusOrdsResponse:
-    type: object
-    required: 
-    - amount_owing
-    - result_code
-    - result_message
-    properties:
-      amount_owing:
-        type: string
-      result_code:
-        type: string
-      result_message: 
-        type: string 
-  vipsPaymentPostRequest:
-    type: object
-    required:
-    - card_type
-    - total_price
-    properties:
-      card_type:
-        type: string
-      total_price:
-        type: string
-  vipsPaymentOrdsResponse:
-    type: object
-    required:
-    - status_code
-    - status_message
-    properties:
-      status_code:
-        type: string
-      status_message:
-        type: string           
+        type: string                    
   errorMessage:
     type: object
     required:

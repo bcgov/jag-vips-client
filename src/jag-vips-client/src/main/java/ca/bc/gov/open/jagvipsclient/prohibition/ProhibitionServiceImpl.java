@@ -46,8 +46,8 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setReviewEndDtm(response.getReviewEndTm());
 			status.setReceiptNumberTxt(response.getReceiptNumberTxt());
 
-			logger.info("Processed get prohibition info request: [{}] ORDS returned code: {} and message: {} ",
-					correlationId, response.getStatusCode(), response.getStatusMessage());
+			logger.info("Processed get prohibition info request: ORDS returned code: {} and message: {} ",
+					response.getStatusCode(), response.getStatusMessage());
 
 			return VipsProhibitionStatusResponse.successResponse(status, response.getStatusCode(),
 					response.getStatusMessage());

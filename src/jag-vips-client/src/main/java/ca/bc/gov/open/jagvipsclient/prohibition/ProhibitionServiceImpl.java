@@ -42,6 +42,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setReviewCreatedYn(response.getReviewCreatedYn());
 			status.setOriginalCause(response.getOriginalCause());
 			status.setSurnameNm(response.getSurnameNm());
+			status.setDriverLicenceSeized(response.getDriverLicenceSeizedYn());
 			status.setReviewStartDtm(response.getReviewStartTm());
 			status.setReviewEndDtm(response.getReviewEndTm());
 			status.setReceiptNumberTxt(response.getReceiptNumberTxt());

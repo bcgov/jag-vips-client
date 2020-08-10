@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "noticeTypeCd", "effectiveDt", "reviewFormSubmittedYn",
-		"reviewCreatedYn", "originalCause", "surnameNm", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt" })
+		"reviewCreatedYn", "originalCause", "surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt" })
 public class ProhibitionStatus {
 	
 	@JsonProperty("noticeTypeCd")
@@ -26,6 +26,8 @@ public class ProhibitionStatus {
 	private String originalCause;
 	@JsonProperty("surnameNm")
 	private String surnameNm;
+	@JsonProperty("driverLicenceSeizedYn")
+	private String driverLicenceSeized;
 	@JsonProperty("reviewStartDtm")
 	private String reviewStartDtm;
 	@JsonProperty("reviewEndDtm")
@@ -91,6 +93,14 @@ public class ProhibitionStatus {
 	@JsonProperty("surnameNm")
 	public void setSurnameNm(String surnameNm) {
 		this.surnameNm = surnameNm;
+	}
+	
+	public String getDriverLicenceSeized() {
+		return driverLicenceSeized;
+	}
+
+	public void setDriverLicenceSeized(String driverLicenceSeized) {
+		this.driverLicenceSeized = driverLicenceSeized;
 	}
 
 	@JsonProperty("reviewStartDtm")

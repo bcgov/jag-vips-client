@@ -143,6 +143,7 @@ definitions:
     - review_created_yn
     - original_cause
     - surname_nm
+    - driver_licence_seized_yn
     - review_start_tm
     - review_end_tm
     - receipt_number_txt
@@ -163,6 +164,8 @@ definitions:
         type: string
       surname_nm:
         type: string
+      driver_licence_seized_yn:
+        type: string  
       review_start_tm:
         type: string
       review_end_tm:

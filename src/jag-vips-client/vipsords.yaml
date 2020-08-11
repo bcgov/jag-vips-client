@@ -171,7 +171,16 @@ definitions:
       review_end_tm:
         type: string
       receipt_number_txt:
-        type: string                    
+        type: string   
+      disclosure:
+        type: array
+        items:
+          type: object
+          properties:
+            docId:
+              type: string
+            disclosed:
+              type: string                 
   errorMessage:
     type: object
     required:

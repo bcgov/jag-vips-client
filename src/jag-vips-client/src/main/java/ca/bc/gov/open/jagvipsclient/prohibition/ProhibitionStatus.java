@@ -1,5 +1,8 @@
 package ca.bc.gov.open.jagvipsclient.prohibition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -10,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "noticeTypeCd", "effectiveDt", "reviewFormSubmittedYn",
-		"reviewCreatedYn", "originalCause", "surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt" })
+@JsonPropertyOrder({ "noticeTypeCd", "effectiveDt", "reviewFormSubmittedYn", "reviewCreatedYn", "originalCause",
+		"surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt", "disclosure" })
 public class ProhibitionStatus {
 	
 	@JsonProperty("noticeTypeCd")
@@ -34,6 +37,8 @@ public class ProhibitionStatus {
 	private String reviewEndDtm;
 	@JsonProperty("receiptNumberTxt")
 	private String receiptNumberTxt;
+	@JsonProperty("disclosure")
+	private List<DocumentDisclosureInfo> disclosure = null;
 
 	@JsonProperty("noticeTypeCd")
 	public String getNoticeTypeCd() {
@@ -131,6 +136,18 @@ public class ProhibitionStatus {
 	@JsonProperty("receiptNumberTxt")
 	public void setReceiptNumberTxt(String receiptNumberTxt) {
 		this.receiptNumberTxt = receiptNumberTxt;
+	}
+	
+	@JsonProperty("disclosure")
+	public List<DocumentDisclosureInfo> getDisclosure() {
+		if (null == this.disclosure) 
+			this.disclosure = new ArrayList<>();
+		return disclosure;
+	}
+	
+	@JsonProperty("disclosure")
+	public void setDisclosure(List<DocumentDisclosureInfo> disclosure) {
+		this.disclosure = disclosure;
 	}
 
 }

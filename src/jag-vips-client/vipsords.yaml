@@ -179,7 +179,7 @@ definitions:
           properties:
             docId:
               type: string
-            disclosed:
+            disclosed_dtm:
               type: string                 
   errorMessage:
     type: object

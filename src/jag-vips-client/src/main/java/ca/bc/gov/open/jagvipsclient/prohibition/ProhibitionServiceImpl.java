@@ -52,17 +52,14 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setReceiptNumberTxt(response.getReceiptNumberTxt());
 
 			List<DocumentDisclosureInfo> disclosureList = new ArrayList<>();
-			// TODO Null check will be removed if disclosure is required field in the response
+			
 			if (null != response.getDisclosure()) {
 
 				for (VipsProhibitionStatusOrdsResponseDisclosure element : response.getDisclosure()) {
-					disclosureList.add(new DocumentDisclosureInfo(element.getDocId(), element.getDisclosed()));
+					disclosureList.add(new DocumentDisclosureInfo(element.getDocId(), element.getDisclosedDtm()));
 				}
+				status.setDisclosure(disclosureList);
 			}
-			// TODO Dummy value - will be deleted after ORDS stored proc is in place
-			disclosureList.add(new DocumentDisclosureInfo("123", null));
-			disclosureList.add(new DocumentDisclosureInfo("456", "2019-01-02 17:30:00 -08:00"));
-			status.setDisclosure(disclosureList);
 
 			logger.info("Processed get prohibition info request: ORDS returned code: {} and message: {} ",
 					response.getStatusCode(), response.getStatusMessage());

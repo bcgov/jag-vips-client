@@ -43,7 +43,7 @@ public class ProhibitionServiceImplTest {
 		
 		List<VipsProhibitionStatusOrdsResponseDisclosure> disclosureList = new ArrayList<>();
 		VipsProhibitionStatusOrdsResponseDisclosure disclosure = new VipsProhibitionStatusOrdsResponseDisclosure();
-		disclosure.setDisclosed("2019-01-02 17:30:00 -08:00");
+		disclosure.setDisclosedDtm("2019-01-02 17:30:00 -08:00");
 		disclosure.setDocId("456");
 		disclosureList.add(disclosure);
 
@@ -51,6 +51,7 @@ public class ProhibitionServiceImplTest {
 		prohibitionOrdsResponse.setStatusCode(String.valueOf(VipsOrdsClientConstants.SERVICE_SUCCESS_CD));
 		prohibitionOrdsResponse.setStatusMessage(SUCCESS_RESPONSE);
 		prohibitionOrdsResponse.setDisclosure(disclosureList);
+		
 
 		Mockito.when(prohibitionApiMock.prohibitionStatusNoticeNoGet(eq("1"))).thenReturn(prohibitionOrdsResponse);
 		Mockito.when(prohibitionApiMock.prohibitionStatusNoticeNoGet(eq("2")))

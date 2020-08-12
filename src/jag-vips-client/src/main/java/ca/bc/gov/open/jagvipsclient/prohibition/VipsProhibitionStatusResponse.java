@@ -39,18 +39,10 @@ public class VipsProhibitionStatusResponse {
 		return respCode;
 	}
 	
-	public void setRespCode(int respCode) {
-		this.respCode = respCode;
-	}
-
 	public String getRespMsg() {
 		return respMsg;
 	}
 	
-	public void setRespMsg(String respMsg) {
-		this.respMsg = respMsg;
-	}
-
 	public static VipsProhibitionStatusResponse errorResponse(String errorMessage) {
 		return new VipsProhibitionStatusResponse(VipsOrdsClientConstants.SERVICE_FAILURE_CD, errorMessage);
 	}

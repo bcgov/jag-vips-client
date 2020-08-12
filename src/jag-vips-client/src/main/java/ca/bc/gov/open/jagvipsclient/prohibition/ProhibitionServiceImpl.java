@@ -56,7 +56,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			if (null != response.getDisclosure()) {
 
 				for (VipsProhibitionStatusOrdsResponseDisclosure element : response.getDisclosure()) {
-					disclosureList.add(new DocumentDisclosureInfo(element.getDocId(), element.getDisclosed()));
+					disclosureList.add(new DocumentDisclosureInfo(element.getDocId(), element.getDisclosedDtm()));
 				}
 			}
 			// TODO Dummy value - will be deleted after ORDS stored proc is in place

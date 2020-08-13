@@ -1,9 +1,12 @@
 package ca.bc.gov.open.jagvipsclient;
 
+import ca.bc.gov.open.jag.ordsvipsclient.api.DisclosureApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.DocumentApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.HealthApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiClient;
+import ca.bc.gov.open.jagvipsclient.disclosure.DisclosureService;
+import ca.bc.gov.open.jagvipsclient.disclosure.DisclosureServiceImpl;
 import ca.bc.gov.open.jagvipsclient.document.DocumentService;
 import ca.bc.gov.open.jagvipsclient.document.DocumentServiceImpl;
 import ca.bc.gov.open.jagvipsclient.health.HealthService;
@@ -61,6 +64,16 @@ public class AutoConfiguration {
     public ProhibitionService prohibitionService(ProhibitionStatusApi prohibitionStatusApi) {
         return new ProhibitionServiceImpl(prohibitionStatusApi);
     }
+
+	@Bean
+	public DisclosureApi disclosureApi(ApiClient apiClient) {
+		return new DisclosureApi(apiClient);
+	}
+
+	@Bean
+	public DisclosureService disclosureService(DisclosureApi disclosureApi) {
+		return new DisclosureServiceImpl(disclosureApi);
+	}
 
     @Bean
     public HealthApi healthApi(ApiClient apiClient) {

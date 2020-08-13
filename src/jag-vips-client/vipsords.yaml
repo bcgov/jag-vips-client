@@ -99,7 +99,7 @@ paths:
         required: true
         type: string
         description: Implicit parameter
-  /vipsDisclosure/{documentId}/{authGuid}:
+  /disclosure/{documentId}/{authGuid}:
     get:
       tags:
       - Disclosure
@@ -126,7 +126,7 @@ paths:
         required: true
         type: string
         description: Implicit parameter
-  /vipsDisclosure/{noticeNo}/{documentId}/{disclosedDtm}/{authGuid}:
+  /disclosure/{noticeNo}/{documentId}/{disclosedDtm}/{authGuid}:
     patch:
       tags:
       - Disclosure

@@ -28,24 +28,44 @@ public class DisclosureServiceImpl implements DisclosureService {
 	@Override
 	public DisclosureResponse getDisclosureDocument(String documentId, String authGuid, String correlationId) {
 		
-		try {
+		//TODO Uncomment code and remove dummy response
+		
+		/*
+		 * try {
+		 * 
+		 * VipsDisclosureDocumentOrdsResponse response = this.disclosureApi
+		 * .disclosureDocumentIdAuthGuidGet(documentId, authGuid);
+		 * 
+		 * logger.
+		 * info("Processed Get Disclosure Document request: ORDS returned code: {} and message: {} "
+		 * , response.getStatusCode(), response.getStatusMessage());
+		 * 
+		 * DocumentInfo documentInfo = new DocumentInfo(response.getMimeType(),
+		 * response.getDocument());
+		 * 
+		 * return DisclosureResponse.successDocumentResponse(documentInfo,
+		 * response.getStatusCode(), response.getStatusMessage());
+		 * 
+		 * } catch (ApiException ex) {
+		 * logger.error("Disclosure Service threw an exception: " + ex.getMessage(),
+		 * ex); return DisclosureResponse.errorResponse(ex.getMessage()); }
+		 */
+		 
+		
+		VipsDisclosureDocumentOrdsResponse response = new VipsDisclosureDocumentOrdsResponse();
+		response.setStatusCode("0");
+		response.setStatusMessage("success");
+		response.setMimeType("application/pdf");
+		response.setDocument("VGhpcyBpcyBzb21lIGRvY3VtZW50IGNvbnRlbnQ=");
+		
+		logger.info("Processed Get Disclosure Document request: ORDS returned code: {} and message: {} ",
+				response.getStatusCode(), response.getStatusMessage());
 
-			VipsDisclosureDocumentOrdsResponse response = this.disclosureApi.disclosureDocumentIdAuthGuidGet(documentId,
-					authGuid);
+		DocumentInfo documentInfo = new DocumentInfo(response.getMimeType(), response.getDocument());
 
-			logger.info("Processed Get Disclosure Document request: ORDS returned code: {} and message: {} ",
-					response.getStatusCode(), response.getStatusMessage());
-
-			DocumentInfo documentInfo = new DocumentInfo(response.getMimeType(), response.getDocument());
-
-			return DisclosureResponse.successDocumentResponse(documentInfo, response.getStatusCode(),
-					response.getStatusMessage());
-
-		} catch (ApiException ex) {
-			logger.error("Disclosure Service threw an exception: " + ex.getMessage(), ex);
-			return DisclosureResponse.errorResponse(ex.getMessage());
-		}
-
+		return DisclosureResponse.successDocumentResponse(documentInfo, response.getStatusCode(),
+				response.getStatusMessage());
+		
 	}
 
 	@Override
@@ -56,8 +76,8 @@ public class DisclosureServiceImpl implements DisclosureService {
 		
 		/*
 		 * try { VipsDisclosureSentOrdsResponse response = this.disclosureApi
-		 * .vipsDisclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(noticeNo,
-		 * documentId, disclosedDtm, authGuid);
+		 * .disclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(noticeNo, documentId,
+		 * disclosedDtm, authGuid);
 		 * 
 		 * logger.
 		 * info("Processed Set Disclosure Document as sent request: ORDS returned code: {} and message: {} "

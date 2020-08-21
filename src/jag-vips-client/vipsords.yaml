@@ -241,7 +241,7 @@ definitions:
         items:
           type: object
           properties:
-            docId:
+            document_id:
               type: string
             disclosed_dtm:
               type: string   

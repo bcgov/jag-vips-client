@@ -44,7 +44,7 @@ public class ProhibitionServiceImplTest {
 		List<VipsProhibitionStatusOrdsResponseDisclosure> disclosureList = new ArrayList<>();
 		VipsProhibitionStatusOrdsResponseDisclosure disclosure = new VipsProhibitionStatusOrdsResponseDisclosure();
 		disclosure.setDisclosedDtm("2019-01-02 17:30:00 -08:00");
-		disclosure.setDocId("456");
+		disclosure.setDocumentId("456");
 		disclosureList.add(disclosure);
 
 		VipsProhibitionStatusOrdsResponse prohibitionOrdsResponse = new VipsProhibitionStatusOrdsResponse();

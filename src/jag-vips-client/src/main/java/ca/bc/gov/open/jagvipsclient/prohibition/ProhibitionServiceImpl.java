@@ -56,7 +56,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			if (null != response.getDisclosure()) {
 
 				for (VipsProhibitionStatusOrdsResponseDisclosure element : response.getDisclosure()) {
-					disclosureList.add(new DocumentDisclosureInfo(element.getDocId(), element.getDisclosedDtm()));
+					disclosureList.add(new DocumentDisclosureInfo(element.getDocumentId(), element.getDisclosedDtm()));
 				}
 				status.setDisclosure(disclosureList);
 			}

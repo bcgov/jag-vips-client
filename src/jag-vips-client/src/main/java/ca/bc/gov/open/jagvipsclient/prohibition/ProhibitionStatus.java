@@ -37,6 +37,8 @@ public class ProhibitionStatus {
 	private String reviewEndDtm;
 	@JsonProperty("receiptNumberTxt")
 	private String receiptNumberTxt;
+	@JsonProperty("applicationId")
+	private String applicationId;
 	@JsonProperty("disclosure")
 	private List<DocumentDisclosureInfo> disclosure = null;
 
@@ -138,6 +140,16 @@ public class ProhibitionStatus {
 		this.receiptNumberTxt = receiptNumberTxt;
 	}
 	
+	@JsonProperty("applicationId")
+	public String getApplicationId() {
+		return applicationId;
+	}
+	
+	@JsonProperty("applicationId")
+	public void setApplicationId(String applicationId) {
+		this.applicationId = applicationId;
+	}
+
 	@JsonProperty("disclosure")
 	public List<DocumentDisclosureInfo> getDisclosure() {
 		if (null == this.disclosure) 

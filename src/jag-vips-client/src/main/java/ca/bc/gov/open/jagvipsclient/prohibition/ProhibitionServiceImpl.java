@@ -50,6 +50,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setReviewStartDtm(response.getReviewStartTm());
 			status.setReviewEndDtm(response.getReviewEndTm());
 			status.setReceiptNumberTxt(response.getReceiptNumberTxt());
+			status.setApplicationId(response.getApplicationId());
 
 			List<DocumentDisclosureInfo> disclosureList = new ArrayList<>();
 			

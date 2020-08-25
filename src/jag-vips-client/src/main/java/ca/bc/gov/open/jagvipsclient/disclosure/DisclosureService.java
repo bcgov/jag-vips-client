@@ -11,7 +11,6 @@ public interface DisclosureService {
 
 	DisclosureResponse getDisclosureDocument(String documentId, String authGuid, String correlationId);
 
-	DisclosureResponse setDisclosureSent(String noticeNo, String documentId, String disclosedDtm, String authGuid,
-			String correlationId);
+	DisclosureResponse setDisclosureSent(String documentId, String disclosedDtm, String authGuid, String correlationId);
 
 }

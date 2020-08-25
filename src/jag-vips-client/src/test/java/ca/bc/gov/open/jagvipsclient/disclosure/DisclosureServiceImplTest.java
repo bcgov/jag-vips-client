@@ -13,7 +13,6 @@ import org.mockito.MockitoAnnotations;
 
 import ca.bc.gov.open.jag.ordsvipsclient.api.DisclosureApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsDisclosureDocumentOrdsResponse;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsDisclosureSentOrdsResponse;
 import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
 
@@ -39,27 +38,36 @@ public class DisclosureServiceImplTest {
 	public void setup() throws ApiException {
 		MockitoAnnotations.initMocks(this);
 
-		VipsDisclosureDocumentOrdsResponse disclosureDocumentResponse = new VipsDisclosureDocumentOrdsResponse();
-		disclosureDocumentResponse.setStatusCode(String.valueOf(VipsOrdsClientConstants.SERVICE_SUCCESS_CD));
-		disclosureDocumentResponse.setStatusMessage(SUCCESS_RESPONSE);
-		disclosureDocumentResponse.setDocument("123");
-		disclosureDocumentResponse.setMimeType("PDF");
-
-		VipsDisclosureSentOrdsResponse disclosureResponse = new VipsDisclosureSentOrdsResponse();
-		disclosureResponse.setUpdDtm("2019-01-02 17:30:00 -08:00");
-		disclosureResponse.setStatusCode(String.valueOf(VipsOrdsClientConstants.SERVICE_SUCCESS_CD));
-		disclosureResponse.setStatusMessage(SUCCESS_RESPONSE);
-
-		Mockito.when(disclosureApi.disclosureDocumentIdAuthGuidGet(eq("1"), any()))
-				.thenReturn(disclosureDocumentResponse);
-		Mockito.when(disclosureApi.disclosureDocumentIdAuthGuidGet(eq("2"), any()))
-				.thenThrow(new ApiException(ERROR_RESPONSE));
-
-		Mockito.when(disclosureApi.disclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(eq("1"), any(), any(), any()))
-				.thenReturn(disclosureResponse);
-		Mockito.when(disclosureApi.disclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(eq("2"), any(), any(), any()))
-				.thenThrow(new ApiException(ERROR_RESPONSE));
-
+		
+		/*
+		 * VipsDisclosureDocumentOrdsResponse disclosureDocumentResponse = new
+		 * VipsDisclosureDocumentOrdsResponse();
+		 * disclosureDocumentResponse.setStatusCode(String.valueOf(
+		 * VipsOrdsClientConstants.SERVICE_SUCCESS_CD));
+		 * disclosureDocumentResponse.setStatusMessage(SUCCESS_RESPONSE);
+		 * disclosureDocumentResponse.setDocument("123");
+		 * disclosureDocumentResponse.setMimeType("PDF");
+		 * 
+		 * 
+		 * VipsDisclosureSentOrdsResponse disclosureResponse = new
+		 * VipsDisclosureSentOrdsResponse();
+		 * disclosureResponse.setUpdDtm("2019-01-02 17:30:00 -08:00");
+		 * disclosureResponse.setStatusCode(String.valueOf(VipsOrdsClientConstants.
+		 * SERVICE_SUCCESS_CD)); disclosureResponse.setStatusMessage(SUCCESS_RESPONSE);
+		 * 
+		 * Mockito.when(disclosureApi.disclosureDocumentIdAuthGuidGet(eq("1"), any()))
+		 * .thenReturn(disclosureDocumentResponse);
+		 * Mockito.when(disclosureApi.disclosureDocumentIdAuthGuidGet(eq("2"), any()))
+		 * .thenThrow(new ApiException(ERROR_RESPONSE));
+		 * 
+		 * 
+		 * Mockito.when(disclosureApi.
+		 * disclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(eq("1"), any(), any(),
+		 * any())) .thenReturn(disclosureResponse); Mockito.when(disclosureApi.
+		 * disclosureNoticeNoDocumentIdDisclosedDtmAuthGuidPatch(eq("2"), any(), any(),
+		 * any())) .thenThrow(new ApiException(ERROR_RESPONSE));
+		 */
+		 
 		service = new DisclosureServiceImpl(disclosureApi);
 	}
 	

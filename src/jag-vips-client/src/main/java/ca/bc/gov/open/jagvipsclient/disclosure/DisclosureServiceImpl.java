@@ -48,6 +48,12 @@ public class DisclosureServiceImpl implements DisclosureService {
 		try {
 			// Retrieve response file object
 			file = this.disclosureApi.disclosureDocumentIdAuthGuidGet(documentId, authGuid);
+			
+			if (null == file) {
+				logger.error("Disclosure Service threw an exception: Null file returned from ORDS");
+				return DisclosureResponse.errorResponse("File not found");
+			}
+			
 			// Read file as a String to check error status code
 			fileString = FileUtils.readFileToString(file, StandardCharsets.UTF_8.name());
 			// Read file as byte array to encode if success status
@@ -69,8 +75,7 @@ public class DisclosureServiceImpl implements DisclosureService {
 			logger.error("Disclosure Service threw an exception: Could not read file " + ex.getMessage(), ex);
 			return DisclosureResponse.errorResponse(ex.getMessage());
 		} catch (ParseException e) {
-			// Log success message as parse exception is thrown only when valid PDF is
-			// returned
+			// Log success message as parse exception is thrown only when valid PDF is returned
 			logger.info("Processed Get Disclosure Document request: ORDS returned file: {} ", file.getName());
 		}
 
@@ -85,13 +90,13 @@ public class DisclosureServiceImpl implements DisclosureService {
 	}
 
 	@Override
-	public DisclosureResponse setDisclosureSent(String documentId, String disclosedDtm, String authGuid,
+	public DisclosureResponse setDisclosureSent(String documentId, String disclosedDtm, String authGuid, String userId,
 			String correlationId) {
 
 		try {
 			VipsDisclosureSentOrdsRequest request = new VipsDisclosureSentOrdsRequest();
 			request.setDisclosureDtm(disclosedDtm);
-			request.setUserId("DigitalFormsApi");
+			request.setUserId(userId);
 			VipsDisclosureSentOrdsResponse response = this.disclosureApi.disclosureDocumentIdAuthGuidPatch(authGuid,
 					documentId, request);
 

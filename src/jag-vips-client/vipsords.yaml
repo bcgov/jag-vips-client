@@ -200,7 +200,7 @@ definitions:
     - status_code
     - status_message
     - notice_type_cd
-    - effective_dt
+    - notice_served_dt
     - review_form_submitted_yn
     - review_created_yn
     - original_cause
@@ -217,7 +217,7 @@ definitions:
         type: string
       notice_type_cd:
         type: string
-      effective_dt:
+      notice_served_dt:
         type: string
       review_form_submitted_yn:
         type: string

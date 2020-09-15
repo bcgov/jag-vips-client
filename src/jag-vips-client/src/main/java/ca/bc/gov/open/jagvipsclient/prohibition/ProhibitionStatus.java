@@ -13,14 +13,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "noticeTypeCd", "effectiveDt", "reviewFormSubmittedYn", "reviewCreatedYn", "originalCause",
+@JsonPropertyOrder({ "noticeTypeCd", "noticeServedDt", "reviewFormSubmittedYn", "reviewCreatedYn", "originalCause",
 		"surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt", "disclosure" })
 public class ProhibitionStatus {
 	
 	@JsonProperty("noticeTypeCd")
 	private String noticeTypeCd;
-	@JsonProperty("effectiveDt")
-	private String effectiveDt;
+	@JsonProperty("noticeServedDt")
+	private String noticeServedDt;
 	@JsonProperty("reviewFormSubmittedYn")
 	private String reviewFormSubmittedYn;
 	@JsonProperty("reviewCreatedYn")
@@ -52,14 +52,14 @@ public class ProhibitionStatus {
 		this.noticeTypeCd = noticeTypeCd;
 	}
 
-	@JsonProperty("effectiveDt")
-	public String getEffectiveDt() {
-		return effectiveDt;
+	@JsonProperty("noticeServedDt")
+	public String getNoticeServedDt() {
+		return noticeServedDt;
 	}
 
-	@JsonProperty("effectiveDt")
-	public void setEffectiveDt(String effectiveDt) {
-		this.effectiveDt = effectiveDt;
+	@JsonProperty("noticeServedDt")
+	public void setNoticeServedDt(String noticeServedDt) {
+		this.noticeServedDt = noticeServedDt;
 	}
 
 	@JsonProperty("reviewFormSubmittedYn")

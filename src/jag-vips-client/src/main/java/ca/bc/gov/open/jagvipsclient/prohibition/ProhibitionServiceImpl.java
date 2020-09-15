@@ -41,7 +41,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			ProhibitionStatus status = new ProhibitionStatus();
 
 			status.setNoticeTypeCd(response.getNoticeTypeCd());
-			status.setEffectiveDt(response.getEffectiveDt());
+			status.setNoticeServedDt(response.getNoticeServedDt());
 			status.setReviewFormSubmittedYn(response.getReviewFormSubmittedYn());
 			status.setReviewCreatedYn(response.getReviewCreatedYn());
 			status.setOriginalCause(response.getOriginalCause());

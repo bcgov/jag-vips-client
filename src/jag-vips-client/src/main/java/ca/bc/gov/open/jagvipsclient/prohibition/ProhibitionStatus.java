@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "noticeTypeCd", "noticeServedDt", "reviewFormSubmittedYn", "reviewCreatedYn", "originalCause",
-		"surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt", "disclosure" })
+		"surnameNm", "driverLicenceSeized", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt", "disclosure", "reviews" })
 public class ProhibitionStatus {
 	
 	@JsonProperty("noticeTypeCd")
@@ -31,16 +31,10 @@ public class ProhibitionStatus {
 	private String surnameNm;
 	@JsonProperty("driverLicenceSeizedYn")
 	private String driverLicenceSeized;
-	@JsonProperty("reviewStartDtm")
-	private String reviewStartDtm;
-	@JsonProperty("reviewEndDtm")
-	private String reviewEndDtm;
-	@JsonProperty("receiptNumberTxt")
-	private String receiptNumberTxt;
-	@JsonProperty("applicationId")
-	private String applicationId;
 	@JsonProperty("disclosure")
 	private List<DocumentDisclosureInfo> disclosure = null;
+	@JsonProperty("reviews")
+	private List<ReviewInfo> reviews = null;
 
 	@JsonProperty("noticeTypeCd")
 	public String getNoticeTypeCd() {
@@ -110,46 +104,6 @@ public class ProhibitionStatus {
 		this.driverLicenceSeized = driverLicenceSeized;
 	}
 
-	@JsonProperty("reviewStartDtm")
-	public String getReviewStartDtm() {
-		return reviewStartDtm;
-	}
-
-	@JsonProperty("reviewStartDtm")
-	public void setReviewStartDtm(String reviewStartDtm) {
-		this.reviewStartDtm = reviewStartDtm;
-	}
-
-	@JsonProperty("reviewEndDtm")
-	public String getReviewEndDtm() {
-		return reviewEndDtm;
-	}
-
-	@JsonProperty("reviewEndDtm")
-	public void setReviewEndDtm(String reviewEndDtm) {
-		this.reviewEndDtm = reviewEndDtm;
-	}
-
-	@JsonProperty("receiptNumberTxt")
-	public String getReceiptNumberTxt() {
-		return receiptNumberTxt;
-	}
-
-	@JsonProperty("receiptNumberTxt")
-	public void setReceiptNumberTxt(String receiptNumberTxt) {
-		this.receiptNumberTxt = receiptNumberTxt;
-	}
-	
-	@JsonProperty("applicationId")
-	public String getApplicationId() {
-		return applicationId;
-	}
-	
-	@JsonProperty("applicationId")
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
-
 	@JsonProperty("disclosure")
 	public List<DocumentDisclosureInfo> getDisclosure() {
 		if (null == this.disclosure) 
@@ -160,6 +114,18 @@ public class ProhibitionStatus {
 	@JsonProperty("disclosure")
 	public void setDisclosure(List<DocumentDisclosureInfo> disclosure) {
 		this.disclosure = disclosure;
+	}
+	
+	@JsonProperty("reviews")
+	public List<ReviewInfo> getReviews() {
+		if (null == this.reviews) 
+			this.reviews = new ArrayList<>();
+		return reviews;
+	}
+	
+	@JsonProperty("reviews")
+	public void setReviews(List<ReviewInfo> reviews) {
+		this.reviews = reviews;
 	}
 
 }

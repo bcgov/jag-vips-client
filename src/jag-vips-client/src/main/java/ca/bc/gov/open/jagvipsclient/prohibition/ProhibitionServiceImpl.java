@@ -10,6 +10,7 @@ import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponse;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseDisclosure;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseReviews;
 
 /**
  * 
@@ -47,10 +48,6 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setOriginalCause(response.getOriginalCause());
 			status.setSurnameNm(response.getSurnameNm());
 			status.setDriverLicenceSeized(response.getDriverLicenceSeizedYn());
-			status.setReviewStartDtm(response.getReviewStartTm());
-			status.setReviewEndDtm(response.getReviewEndTm());
-			status.setReceiptNumberTxt(response.getReceiptNumberTxt());
-			status.setApplicationId(response.getApplicationId());
 
 			List<DocumentDisclosureInfo> disclosureList = new ArrayList<>();
 			
@@ -61,7 +58,16 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 				}
 				status.setDisclosure(disclosureList);
 			}
-
+			
+			List<ReviewInfo> reviewList = new ArrayList<>();
+			
+			if (null != response.getReviews()) {
+				for (VipsProhibitionStatusOrdsResponseReviews element : response.getReviews()) {
+					reviewList.add(new ReviewInfo(element.getApplicationId(), element.getReviewStatus(), element.getReviewStartTm(), element.getReviewEndTm(), element.getReceiptNumberTxt(), element.getReviewId()));
+				}
+				status.setReviews(reviewList);
+			}
+			
 			logger.info("Processed get prohibition info request: ORDS returned code: {} and message: {} ",
 					response.getStatusCode(), response.getStatusMessage());
 

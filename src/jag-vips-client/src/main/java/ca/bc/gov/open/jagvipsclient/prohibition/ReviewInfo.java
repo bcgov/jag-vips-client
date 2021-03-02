@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "applicationId", "reviewStatus", "reviewStartDtm", "reviewEndDtm", "receiptNumberTxt", "reviewId"})
+@JsonPropertyOrder({ "applicationId", "status", "receiptNumberTxt", "reviewStartDtm", "reviewEndDtm", "reviewId"})
 public class ReviewInfo {
 
 	@JsonProperty("applicationId")
 	private String applicationId;
 	
-	@JsonProperty("reviewStatus")
-	private String reviewStatus;
+	@JsonProperty("status")
+	private String status;
 	
 	@JsonProperty("reviewStartDtm")
 	private String reviewStartDtm;
@@ -33,9 +33,9 @@ public class ReviewInfo {
 	@JsonProperty("reviewId")
 	private String reviewId;
 	
-	public ReviewInfo(String applicationId, String reviewStatus, String reviewStartDtm, String reviewEndDtm, String receiptNumberTxt, String reviewId) {
+	public ReviewInfo(String applicationId, String status, String reviewStartDtm, String reviewEndDtm, String receiptNumberTxt, String reviewId) {
 		this.applicationId = applicationId;
-		this.reviewStatus = reviewStatus;
+		this.status = status;
 		this.reviewStartDtm = reviewStartDtm;
 		this.reviewEndDtm = reviewEndDtm;
 		this.receiptNumberTxt = receiptNumberTxt;
@@ -52,14 +52,14 @@ public class ReviewInfo {
 		this.applicationId = applicationId;
 	}
 
-	@JsonProperty("reviewStatus")
-	public String getReviewStatus() {
-		return reviewStatus;
+	@JsonProperty("status")
+	public String getStatus() {
+		return status;
 	}
 
-	@JsonProperty("reviewStatus")
-	public void setReviewStatus(String reviewStatus) {
-		this.reviewStatus = reviewStatus;
+	@JsonProperty("status")
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@JsonProperty("reviewStartDtm")

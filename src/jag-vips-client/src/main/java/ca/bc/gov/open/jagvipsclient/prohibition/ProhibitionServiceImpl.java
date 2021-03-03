@@ -63,7 +63,7 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			
 			if (null != response.getReviews()) {
 				for (VipsProhibitionStatusOrdsResponseReviews element : response.getReviews()) {
-					reviewList.add(new ReviewInfo(element.getApplicationId(), element.getReviewStatus(), element.getReviewStartTm(), element.getReviewEndTm(), element.getReceiptNumberTxt(), element.getReviewId()));
+					reviewList.add(new ReviewInfo(element.getApplicationId(), element.getReviewStatus(), element.getReviewStartDtm(), element.getReviewEndDtm(), element.getReceiptNumberTxt(), element.getReviewId()));
 				}
 				status.setReviews(reviewList);
 			}

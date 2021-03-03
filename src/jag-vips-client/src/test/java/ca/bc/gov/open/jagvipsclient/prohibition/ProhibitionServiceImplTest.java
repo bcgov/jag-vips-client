@@ -52,8 +52,8 @@ public class ProhibitionServiceImplTest {
 		List<VipsProhibitionStatusOrdsResponseReviews> reviewsList = new ArrayList<>();
 		VipsProhibitionStatusOrdsResponseReviews review = new VipsProhibitionStatusOrdsResponseReviews();
 		review.setApplicationId("123456");
-		review.setReviewStartTm("2021-01-02 17:30:00 -08:00");
-		review.setReviewEndTm("2021-01-02 19:30:00 -08:00");
+		review.setReviewStartDtm("2021-01-02 17:30:00 -08:00");
+		review.setReviewEndDtm("2021-01-02 19:30:00 -08:00");
 		review.setReceiptNumberTxt("567");
 		review.setReviewId("9990");
 		review.setReviewStatus("complete-success");

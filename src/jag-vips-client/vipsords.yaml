@@ -239,17 +239,17 @@ definitions:
         items:
           type: object
           properties:
-            application_id:
+            applicationId:
               type: string
-            review_status:
+            reviewStatus:
               type: string
-            review_start_tm:
+            reviewStartDtm:
               type: string
-            review_end_tm:
+            reviewEndDtm:
               type: string
             receipt_number_txt:
               type: string
-            review_id:
+            reviewId:
               type: string
   vipsDisclosureSentOrdsRequest:
     type: object

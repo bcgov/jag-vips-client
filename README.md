@@ -13,7 +13,7 @@ Add the following dependency to your spring boot application
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
             <artifactId>jag-vips-client</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.1.0</version>
         </dependency>
 
     </dependencies>
@@ -52,4 +52,4 @@ And then replace any stock Jenkins pipeline with the Jenkinsfile found in this r
 
 After running the Openshift pipeline, you should fine something similar in either the Snapshot or Release Nexus repository:
 
-![snapsnot-example](/images/snapshot.PNG)
+![snapsnot-example](/images/snapshot.PNG)\

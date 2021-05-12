@@ -1,5 +1,7 @@
 # jag-vips-client
 
+![Lifecycle:Stable](https://img.shields.io/badge/Lifecycle-Stable-97ca00)
+
 VIPS client as part of DPS Interface Modernization project for Ministry of AG/PSSG
 
 ## Usage

@@ -13,6 +13,7 @@
     <url>https://github.com/bcgov/jag-vips-client</url>
 
     <properties>
+        <log4j2.version>2.17.1</log4j2.version>
         <java.version>1.8</java.version>
     </properties>
 

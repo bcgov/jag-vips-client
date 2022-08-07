@@ -37,7 +37,12 @@ public class DocumentServiceImpl implements DocumentService {
         }
     }
     
-    
+    /**
+     * 
+     * Used by Digital Forms VI IRP API. 
+     * @link https://github.com/bcgov/jag-rsbc-digital-forms-viirp-integration
+     * 
+     */
 	@Override
 	public VipsDocumentResponse storeDocument(String typeCode, String mimeType, String mimeSubType, String authGuid,
 			String noticeTypeCode, String noticeSubjectCode, int pageCount, File body) {

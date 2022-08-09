@@ -75,8 +75,8 @@ paths:
         in: body
         required: true
         schema:
-          type: string
-          format: binary
+            type: string
+            format: binary
   /prohibitionStatus/{noticeNo}:
     get:
       tags:
@@ -161,6 +161,67 @@ paths:
         required: true
         schema:
           "$ref": "#/definitions/vipsDisclosureSentOrdsRequest"
+  /storeDocument:
+    post:
+      description: Digital Forms Store Document Operation
+      tags: 
+      - Document
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          description: Successful document storage
+          schema:
+            "$ref": "#/definitions/vipsDocumentOrdsResponse"
+        '400':
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/errorMessage"
+      consumes:
+      - application/pdf          
+      parameters:
+      - name: type_code
+        in: query
+        type: string
+        required: true
+        description: Implicit parameter
+      - name: mime_type
+        in: query
+        type: string
+        required: true
+        description: Implicit parameter
+      - name: mime_sub_type
+        in: query
+        type: string
+        required: true
+        description: Implicit parameter
+      - name: auth_guid
+        in: query
+        type: string
+        required: true
+        description: Implicit parameter
+      - name: notice_type_code
+        in: query
+        type: string
+        required: false
+        description: Implicit parameter
+      - name: notice_subject_code
+        in: query
+        type: string
+        required: false
+        description: Implicit parameter  
+      - name: page_count
+        in: query
+        type: integer
+        format: int32
+        required: false
+        description: Implicit parameter
+      - name: file_object
+        in: body
+        required: true
+        schema:
+           type: string
+           format: binary         
 definitions:
   healthOrdsResponse:
     type: object
@@ -283,4 +344,4 @@ definitions:
       status_code:
         type: string
       status_message:
-        type: string
+        type: string      

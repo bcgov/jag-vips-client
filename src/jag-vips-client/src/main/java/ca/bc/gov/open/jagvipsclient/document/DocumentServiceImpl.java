@@ -36,6 +36,30 @@ public class DocumentServiceImpl implements DocumentService {
             return VipsDocumentResponse.errorResponse(ex.getMessage());
         }
     }
+    
+    /**
+     * 
+     * Used by Digital Forms VI IRP API. 
+     * @link https://github.com/bcgov/jag-rsbc-digital-forms-viirp-integration
+     * 
+     */
+	@Override
+	public VipsDocumentResponse storeDocument(String typeCode, String mimeType, String mimeSubType, String authGuid,
+			String noticeTypeCode, String noticeSubjectCode, int pageCount, File body) {
+		try {
+			
+			VipsDocumentOrdsResponse response = this.documentApi.storeDocumentPost(typeCode, mimeType, mimeSubType,
+					authGuid, body, noticeTypeCode, noticeSubjectCode, pageCount);
+			
+			return VipsDocumentResponse.successResponse(response.getDocumentId(), response.getStatusCode(),
+					response.getStatusMessage());
+
+		} catch (ApiException ex) {
+
+			logger.error("Document Service did throw exception: " + ex.getMessage(), ex);
+			return VipsDocumentResponse.errorResponse(ex.getMessage());
+		}
+	}
 
     private String sanitizeBase64(String value) {
         return value
@@ -43,5 +67,7 @@ public class DocumentServiceImpl implements DocumentService {
                 .replace('+', '-')
                 .replaceAll("\r\n", "");
     }
+
+
 
 }

@@ -213,6 +213,7 @@ paths:
       - name: page_count
         in: query
         type: integer
+        format: int32
         required: false
         description: Implicit parameter
       - name: file_object

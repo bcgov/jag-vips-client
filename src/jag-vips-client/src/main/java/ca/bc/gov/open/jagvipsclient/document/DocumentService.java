@@ -13,6 +13,6 @@ public interface DocumentService {
                                        String authGuid, File body);
      
      VipsDocumentResponse storeDocument(String typeCode, String mimeType, String mimeSubType, String authGuid, 
-    		 							String noticeTypeCode, String noticeSubjectCode, int pageCount, File body);
+    		 							String noticeTypeCode, String noticeSubjectCode, int pageCount, byte[] body);
 
 }

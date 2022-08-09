@@ -221,7 +221,7 @@ paths:
         required: true
         schema:
            type: string
-           format: binary         
+           format: byte         
 definitions:
   healthOrdsResponse:
     type: object

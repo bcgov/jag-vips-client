@@ -45,7 +45,7 @@ public class DocumentServiceImpl implements DocumentService {
      */
 	@Override
 	public VipsDocumentResponse storeDocument(String typeCode, String mimeType, String mimeSubType, String authGuid,
-			String noticeTypeCode, String noticeSubjectCode, int pageCount, File body) {
+			String noticeTypeCode, String noticeSubjectCode, int pageCount, byte[] body) {
 		try {
 			
 			VipsDocumentOrdsResponse response = this.documentApi.storeDocumentPost(typeCode, mimeType, mimeSubType,

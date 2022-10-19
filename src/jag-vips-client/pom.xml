@@ -23,7 +23,7 @@
 		<maven-plugin-version>1.0.0</maven-plugin-version>
 		<io.swagger.version>1.5.22</io.swagger.version>
 		<org.glassfish.jersey.version>2.29</org.glassfish.jersey.version>
-		<com.fasterxml.jackson.version>2.11.0</com.fasterxml.jackson.version>
+		<com.fasterxml.jackson.version>2.13.4.1</com.fasterxml.jackson.version>
 	</properties>
 
 	<profiles>

@@ -21,12 +21,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(VipsClientProperties.class)
-public class AutoConfiguration {
+public class VipsClientAutoConfiguration {
 
     private final VipsClientProperties vipsClientProperties;
 
 
-    public AutoConfiguration(VipsClientProperties vipsClientProperties) {
+    public VipsClientAutoConfiguration(VipsClientProperties vipsClientProperties) {
         this.vipsClientProperties = vipsClientProperties;
     }
 

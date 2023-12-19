@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponse;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseDisclosure;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseReviews;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseDisclosureInner;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseReviewsInner;
 
 /**
- * 
+ *
  * Collection of services for accessing VIPS prohibition related data.
- * 
+ *
  * @author shaunmillargov
  *
  */
@@ -50,24 +50,24 @@ public class ProhibitionServiceImpl implements ProhibitionService {
 			status.setDriverLicenceSeized(response.getDriverLicenceSeizedYn());
 
 			List<DocumentDisclosureInfo> disclosureList = new ArrayList<>();
-			
+
 			if (null != response.getDisclosure()) {
 
-				for (VipsProhibitionStatusOrdsResponseDisclosure element : response.getDisclosure()) {
+				for (VipsProhibitionStatusOrdsResponseDisclosureInner element : response.getDisclosure()) {
 					disclosureList.add(new DocumentDisclosureInfo(element.getDocumentId(), element.getDisclosedDtm()));
 				}
 				status.setDisclosure(disclosureList);
 			}
-			
+
 			List<ReviewInfo> reviewList = new ArrayList<>();
-			
+
 			if (null != response.getReviews()) {
-				for (VipsProhibitionStatusOrdsResponseReviews element : response.getReviews()) {
+				for (VipsProhibitionStatusOrdsResponseReviewsInner element : response.getReviews()) {
 					reviewList.add(new ReviewInfo(element.getApplicationId(), element.getReviewStatus(), element.getReviewStartDtm(), element.getReviewEndDtm(), element.getReceiptNumberTxt(), element.getReviewId()));
 				}
 				status.setReviews(reviewList);
 			}
-			
+
 			logger.info("Processed get prohibition info request: ORDS returned code: {} and message: {} ",
 					response.getStatusCode(), response.getStatusMessage());
 

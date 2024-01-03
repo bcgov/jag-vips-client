@@ -16,8 +16,8 @@ import org.mockito.MockitoAnnotations;
 import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponse;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseDisclosure;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseReviews;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseDisclosureInner;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsProhibitionStatusOrdsResponseReviewsInner;
 import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
 
 /**
@@ -41,23 +41,23 @@ public class ProhibitionServiceImplTest {
 	@BeforeAll
 	public void setup() throws ApiException {
 		MockitoAnnotations.initMocks(this);
-		
-		List<VipsProhibitionStatusOrdsResponseDisclosure> disclosureList = new ArrayList<>();
-		VipsProhibitionStatusOrdsResponseDisclosure disclosure = new VipsProhibitionStatusOrdsResponseDisclosure();
+
+		List<VipsProhibitionStatusOrdsResponseDisclosureInner> disclosureList = new ArrayList<>();
+		VipsProhibitionStatusOrdsResponseDisclosureInner disclosure = new VipsProhibitionStatusOrdsResponseDisclosureInner();
 		disclosure.setDisclosedDtm("2019-01-02 17:30:00 -08:00");
 		disclosure.setDocumentId("456");
-		
+
 		disclosureList.add(disclosure);
-		
-		List<VipsProhibitionStatusOrdsResponseReviews> reviewsList = new ArrayList<>();
-		VipsProhibitionStatusOrdsResponseReviews review = new VipsProhibitionStatusOrdsResponseReviews();
+
+		List<VipsProhibitionStatusOrdsResponseReviewsInner> reviewsList = new ArrayList<>();
+		VipsProhibitionStatusOrdsResponseReviewsInner review = new VipsProhibitionStatusOrdsResponseReviewsInner();
 		review.setApplicationId("123456");
 		review.setReviewStartDtm("2021-01-02 17:30:00 -08:00");
 		review.setReviewEndDtm("2021-01-02 19:30:00 -08:00");
 		review.setReceiptNumberTxt("567");
 		review.setReviewId("9990");
 		review.setReviewStatus("complete-success");
-		
+
 		reviewsList.add(review);
 
 		VipsProhibitionStatusOrdsResponse prohibitionOrdsResponse = new VipsProhibitionStatusOrdsResponse();
@@ -65,7 +65,7 @@ public class ProhibitionServiceImplTest {
 		prohibitionOrdsResponse.setStatusMessage(SUCCESS_RESPONSE);
 		prohibitionOrdsResponse.setDisclosure(disclosureList);
 		prohibitionOrdsResponse.setReviews(reviewsList);
-		
+
 
 		Mockito.when(prohibitionApiMock.prohibitionStatusNoticeNoGet(eq("1"))).thenReturn(prohibitionOrdsResponse);
 		Mockito.when(prohibitionApiMock.prohibitionStatusNoticeNoGet(eq("2")))
@@ -82,14 +82,14 @@ public class ProhibitionServiceImplTest {
 		Assertions.assertEquals(SUCCESS_RESPONSE, response.getRespMsg());
 		Assertions.assertEquals("2019-01-02 17:30:00 -08:00", response.getStatus().getDisclosure().get(0).getDisclosedDtm());
 		Assertions.assertEquals("456", response.getStatus().getDisclosure().get(0).getDocumentId());
-		
+
 		Assertions.assertEquals("2021-01-02 17:30:00 -08:00", response.getStatus().getReviews().get(0).getReviewStartDtm());
 		Assertions.assertEquals("2021-01-02 19:30:00 -08:00", response.getStatus().getReviews().get(0).getReviewEndDtm());
 		Assertions.assertEquals("123456", response.getStatus().getReviews().get(0).getApplicationId());
 		Assertions.assertEquals("567", response.getStatus().getReviews().get(0).getReceiptNumberTxt());
 		Assertions.assertEquals("9990", response.getStatus().getReviews().get(0).getReviewId());
 		Assertions.assertEquals("complete-success", response.getStatus().getReviews().get(0).getStatus());
-		
+
 	}
 
 	@Test

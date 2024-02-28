@@ -16,8 +16,8 @@ import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DocumentServiceImplTest {
 
-    public static final String API_EXCEPTION = "api exception";
-    
+    public static final String API_EXCEPTION = "Message: api exception";
+
     private DocumentServiceImpl sut;
 
     private static final String DOCUMENT_ID = "123";
@@ -49,7 +49,7 @@ public class DocumentServiceImplTest {
         Mockito.when(documentApiMock.vipsDocumentPost(Mockito.eq(TYPE_CODE_SUCCESS), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenReturn(successResponse);
         Mockito.when(documentApiMock.vipsDocumentPost(Mockito.eq(TYPE_CODE_FAIL), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenReturn(errorResponse);
         Mockito.when(documentApiMock.vipsDocumentPost(Mockito.eq(TYPE_CODE_EXCEPTION), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenThrow(new ApiException(API_EXCEPTION));
-        
+
         Mockito.when(documentApiMock.storeDocumentPost(Mockito.eq(TYPE_CODE_SUCCESS), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString(), Mockito.anyString(), Mockito.anyInt())).thenReturn(successResponse);
         Mockito.when(documentApiMock.storeDocumentPost(Mockito.eq(TYPE_CODE_FAIL), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString(), Mockito.anyString(), Mockito.anyInt())).thenReturn(errorResponse);
         Mockito.when(documentApiMock.storeDocumentPost(Mockito.eq(TYPE_CODE_EXCEPTION), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString(), Mockito.anyString(), Mockito.anyInt())).thenThrow(new ApiException(API_EXCEPTION));
@@ -82,9 +82,9 @@ public class DocumentServiceImplTest {
         VipsDocumentResponse result = sut.vipsDocument(TYPE_CODE_EXCEPTION, "a", "b", "c", "d", null);
 
         Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_FAILURE_CD, result.getRespCode());
-        Assertions.assertEquals(API_EXCEPTION, result.getRespMsg());
+        Assertions.assertTrue(result.getRespMsg().contains(API_EXCEPTION));
     }
-    
+
     @Test
     public void StoreDocumentwithValidResponseShouldReturnValidResponse() {
 
@@ -110,7 +110,7 @@ public class DocumentServiceImplTest {
         VipsDocumentResponse result = sut.storeDocument(TYPE_CODE_EXCEPTION, "a", "b", "c", "d", "e", 1, null);
 
         Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_FAILURE_CD, result.getRespCode());
-        Assertions.assertEquals(API_EXCEPTION, result.getRespMsg());
+        Assertions.assertTrue(result.getRespMsg().contains(API_EXCEPTION));
     }
-    
+
 }

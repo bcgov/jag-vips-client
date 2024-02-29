@@ -45,6 +45,8 @@ paths:
           description: output of the endpoint
           schema:
             $ref: '#/definitions/errorMessage'
+      consumes:
+      - application/json
       parameters:
       - name: type_code
         in: query
@@ -143,6 +145,8 @@ paths:
           description: output of the endpoint
           schema:
             $ref: '#/definitions/errorMessage'
+      consumes:
+      - application/json
       parameters:
       - name: authGuid
         in: path

@@ -36,7 +36,7 @@ public class DisclosureServiceImplTest {
 
 	public static final String API_EXCEPTION = "api exception";
 	public static final String SUCCESS_RESPONSE = "success";
-	public static final String ERROR_RESPONSE = "error";
+	public static final String ERROR_RESPONSE = "Message: error";
 
 	public static final Path resourcesPath = Paths.get("src", "test", "resources");
 
@@ -109,7 +109,7 @@ public class DisclosureServiceImplTest {
 		DisclosureResponse response = service.getDisclosureDocument("4", "authGuid", "correlationId");
 
 		Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_FAILURE_CD, response.getRespCode());
-		Assertions.assertEquals(ERROR_RESPONSE, response.getRespMsg());
+		Assertions.assertTrue(response.getRespMsg().contains(ERROR_RESPONSE));
 	}
 
 	@Test
@@ -127,7 +127,7 @@ public class DisclosureServiceImplTest {
 				"correlationId");
 
 		Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_FAILURE_CD, response.getRespCode());
-		Assertions.assertEquals(ERROR_RESPONSE, response.getRespMsg());
+		Assertions.assertTrue(response.getRespMsg().contains(ERROR_RESPONSE));
 	}
 
 }

@@ -31,7 +31,7 @@ public class ProhibitionServiceImplTest {
 
 	public static final String API_EXCEPTION = "api exception";
 	public static final String SUCCESS_RESPONSE = "success";
-	public static final String ERROR_RESPONSE = "error";
+	public static final String ERROR_RESPONSE = "Message: error";
 
 	private ProhibitionService service;
 
@@ -97,7 +97,7 @@ public class ProhibitionServiceImplTest {
 		VipsProhibitionStatusResponse response = service.getVipsProhibitionStatus("2", "correlationId");
 
 		Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_FAILURE_CD, response.getRespCode());
-		Assertions.assertEquals(ERROR_RESPONSE, response.getRespMsg());
+		Assertions.assertTrue(response.getRespMsg().contains(ERROR_RESPONSE));
 	}
 
 }

@@ -289,6 +289,38 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/ErrorMessage.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/HealthOrdsResponse.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsDisclosureSentOrdsRequest.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsDisclosureSentOrdsResponse.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsDocumentOrdsResponse.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsProhibitionStatusOrdsResponse.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsProhibitionStatusOrdsResponseDisclosureInner.java</include>
+						<include>${project.build.directory}/generated-sources/openapi/src/main/java/ca/bc/gov/open/jag/ordsvipsclient/api/model/VipsProhibitionStatusOrdsResponseReviewsInner.java</include>
+					</includes>
+					<replacements>
+						<replacement>
+							<token>validateJsonObject\(jsonObj\);</token>
+							<value></value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

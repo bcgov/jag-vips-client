@@ -24,7 +24,7 @@
 		<org.glassfish.jersey.version>3.1.5</org.glassfish.jersey.version>
 		<com.fasterxml.jackson.version>2.15.2</com.fasterxml.jackson.version>
 		<javax.xml.bind.version>2.3.1</javax.xml.bind.version>
-		<spring.version>6.1.6</spring.version>
+		<spring.version>6.1.21</spring.version>
 	</properties>
 
 	<dependencies>

@@ -70,7 +70,7 @@ public class ValidationServiceImplTest {
 
 		Assertions.assertEquals(VipsOrdsClientConstants.SERVICE_SUCCESS_CD, response.getRespCode());
 		Assertions.assertEquals(SUCCESS_RESPONSE, response.getRespMsg());
-		Assertions.assertEquals("Y", response.getValid());
+		Assertions.assertEquals("true", response.getValid());
 	}
 
 	@Test

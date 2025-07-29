@@ -39,7 +39,9 @@ public class ValidationServiceImpl implements ValidationService {
 			logger.info("Processed get getWithinTimeframe: ORDS returned code: {} and message: {} ",
 					response.getStatusCode(), response.getStatusMessage());
 
-			return VipsValidTimeframeResponse.successResponse(response.getValid(), response.getStatusCode(),
+			String valid = String.valueOf("Y".equals(response.getValid()));
+			
+			return VipsValidTimeframeResponse.successResponse(valid, response.getStatusCode(),
 					response.getStatusMessage());
 
 		} catch (ApiException ex) {

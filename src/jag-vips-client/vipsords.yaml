@@ -225,7 +225,34 @@ paths:
         required: true
         schema:
            type: string
-           format: byte         
+           format: byte
+  /validations/withinTimeframe:
+    get:
+      tags:
+        - Validation
+      security:
+        - basicAuth: []
+      description: Validate if today is within the specified time frame
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/vipsValidationOrdsResponse'
+        '400':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/errorMessage'
+      parameters:
+        - name: startDate
+          in: query
+          type: string
+          required: true
+          description: Implicit parameter
+        - name: intervalDays
+          in: query
+          type: number
+          required: true
+          description: Implicit parameter
 definitions:
   healthOrdsResponse:
     type: object
@@ -311,7 +338,16 @@ definitions:
       status_message:
         type: string
       upd_dtm:
-        type: string        
+        type: string
+  vipsValidationOrdsResponse:
+    type: object
+    properties:
+      valid:
+        type: string
+      status_code:
+        type: string
+      status_message:
+        type: string
   errorMessage:
     type: object
     properties:

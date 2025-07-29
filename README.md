@@ -13,7 +13,7 @@ Add the following dependency to your spring boot application
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
             <artifactId>jag-vips-client</artifactId>
-            <version>0.1.2</version>
+            <version>0.2.2</version>
         </dependency>
 
     </dependencies>

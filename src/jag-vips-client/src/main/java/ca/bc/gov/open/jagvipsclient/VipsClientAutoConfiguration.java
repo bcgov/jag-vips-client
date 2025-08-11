@@ -4,6 +4,7 @@ import ca.bc.gov.open.jag.ordsvipsclient.api.DisclosureApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.DocumentApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.HealthApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.ProhibitionStatusApi;
+import ca.bc.gov.open.jag.ordsvipsclient.api.ValidationApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiClient;
 import ca.bc.gov.open.jagvipsclient.disclosure.DisclosureService;
 import ca.bc.gov.open.jagvipsclient.disclosure.DisclosureServiceImpl;
@@ -13,6 +14,9 @@ import ca.bc.gov.open.jagvipsclient.health.HealthService;
 import ca.bc.gov.open.jagvipsclient.health.HealthServiceImpl;
 import ca.bc.gov.open.jagvipsclient.prohibition.ProhibitionService;
 import ca.bc.gov.open.jagvipsclient.prohibition.ProhibitionServiceImpl;
+import ca.bc.gov.open.jagvipsclient.validation.ValidationService;
+import ca.bc.gov.open.jagvipsclient.validation.ValidationServiceImpl;
+
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -54,7 +58,7 @@ public class VipsClientAutoConfiguration {
     public DocumentService documentService(DocumentApi documentApi) {
         return new DocumentServiceImpl(documentApi);
     }
-    
+
     @Bean
     public ProhibitionStatusApi prohibitionStatusApi(ApiClient apiClient) {
         return new ProhibitionStatusApi(apiClient);
@@ -65,15 +69,15 @@ public class VipsClientAutoConfiguration {
         return new ProhibitionServiceImpl(prohibitionStatusApi);
     }
 
-	@Bean
-	public DisclosureApi disclosureApi(ApiClient apiClient) {
-		return new DisclosureApi(apiClient);
-	}
+    @Bean
+    public DisclosureApi disclosureApi(ApiClient apiClient) {
+        return new DisclosureApi(apiClient);
+    }
 
-	@Bean
-	public DisclosureService disclosureService(DisclosureApi disclosureApi) {
-		return new DisclosureServiceImpl(disclosureApi);
-	}
+    @Bean
+    public DisclosureService disclosureService(DisclosureApi disclosureApi) {
+        return new DisclosureServiceImpl(disclosureApi);
+    }
 
     @Bean
     public HealthApi healthApi(ApiClient apiClient) {
@@ -85,4 +89,14 @@ public class VipsClientAutoConfiguration {
         return new HealthServiceImpl(healthApi);
     }
 
+
+    @Bean
+    public ValidationApi validationApi(ApiClient apiClient) {
+        return new ValidationApi(apiClient);
+    }
+
+    @Bean
+    public ValidationService validationService(ValidationApi validationApi) {
+        return new ValidationServiceImpl(validationApi);
+    }
 }

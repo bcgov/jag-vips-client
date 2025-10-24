@@ -253,6 +253,33 @@ paths:
           type: number
           required: true
           description: Implicit parameter
+  /validations/validExpiryDate:
+    get:
+      tags:
+         - Validation
+      security:
+         - basicAuth: []
+      description: Provides next business date as string from given date. Applies Interpretation Act Rules calculation.
+      responses:
+         '200':
+           description: output of the endpoint
+           schema:
+             $ref: '#/definitions/vipsValidationExpiryDateResponse'
+         '400':
+           description: output of the endpoint
+           schema:
+             $ref: '#/definitions/errorMessage'
+      parameters:
+         - name: startDate
+           in: query
+           type: string
+           required: true
+           description: Implicit parameter
+         - name: intervalDays
+           in: query
+           type: number
+           required: true
+           description: Implicit parameter		  
 definitions:
   healthOrdsResponse:
     type: object
@@ -267,6 +294,17 @@ definitions:
         type: string
       instance:
         type: string
+  vipsValidationExpiryDateResponse:
+    type: object
+    properties:
+      document_id:
+        type: string
+      status_code:
+        type: string
+      status_message:
+        type: string	
+      expiry_date:
+        type: string		
   vipsDocumentOrdsResponse:
     type: object
     properties:

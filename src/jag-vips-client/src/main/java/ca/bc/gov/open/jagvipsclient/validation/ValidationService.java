@@ -12,5 +12,6 @@ import java.math.BigDecimal;
 public interface ValidationService {
 
      VipsValidTimeframeResponse getWithinTimeframe(String startDate, BigDecimal intervalDays);
+     VipsValidExpiryDateResponse getValidExpiryDate(String startDate, BigDecimal intervalDays);
 
 }

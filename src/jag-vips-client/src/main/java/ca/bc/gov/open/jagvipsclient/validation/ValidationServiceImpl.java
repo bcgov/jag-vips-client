@@ -1,14 +1,14 @@
 package ca.bc.gov.open.jagvipsclient.validation;
 
-import ca.bc.gov.open.jag.ordsvipsclient.api.ValidationApi;
-import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
-import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsValidationOrdsResponse;
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import ca.bc.gov.open.jag.ordsvipsclient.api.ValidationApi;
+import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsValidationExpiryDateResponse;
+import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsValidationOrdsResponse;
 
 /**
  *
@@ -45,9 +45,27 @@ public class ValidationServiceImpl implements ValidationService {
 					response.getStatusMessage());
 
 		} catch (ApiException ex) {
-			logger.error("Validation Service threw an exception: " + ex.getMessage(), ex);
+			logger.error("getWithinTimeframe Service threw an exception: " + ex.getMessage(), ex);
 			return VipsValidTimeframeResponse.errorResponse(ex.getMessage());
 		}
 	}
 
+	@Override
+	public VipsValidExpiryDateResponse getValidExpiryDate(String startDate, BigDecimal intervalDays) {
+
+		try {
+
+			VipsValidationExpiryDateResponse response = this.validationApi.validationsValidExpiryDateGet(startDate, intervalDays);
+
+			logger.info("Processed get getValidExpiryDate: ORDS returned code: {} and message: {} ",
+					response.getStatusCode(), response.getStatusMessage());
+			
+			return VipsValidExpiryDateResponse.successResponse(response.getExpiryDate(), response.getStatusCode(),
+					response.getStatusMessage());
+
+		} catch (ApiException ex) {
+			logger.error("getValidExpiryDate Service threw an exception: " + ex.getMessage(), ex);
+			return VipsValidExpiryDateResponse.errorResponse(ex.getMessage());
+		}
+	}
 }

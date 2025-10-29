@@ -247,7 +247,8 @@ paths:
           in: query
           type: string
           required: true
-          description: Implicit parameter
+          description: Implicit parameter. Must be in YYYY-MM-DD format
+          pattern: '^\d{4}-\d{2}-\d{2}$'
         - name: intervalDays
           in: query
           type: number
@@ -274,7 +275,8 @@ paths:
            in: query
            type: string
            required: true
-           description: Implicit parameter
+           description: Implicit parameter. Must be in YYYY-MM-DD format
+           pattern: '^\d{4}-\d{2}-\d{2}$'
          - name: intervalDays
            in: query
            type: number

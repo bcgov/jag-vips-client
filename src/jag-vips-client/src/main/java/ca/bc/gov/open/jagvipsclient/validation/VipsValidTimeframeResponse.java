@@ -1,9 +1,9 @@
 package ca.bc.gov.open.jagvipsclient.validation;
 
-import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
-import ca.bc.gov.open.jagvipsclient.prohibition.ProhibitionStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
 
 
 /**

@@ -1,5 +1,6 @@
 package ca.bc.gov.open.jagvipsclient.document;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -32,9 +33,11 @@ public class DocumentServiceImplTest {
     @Mock
     private DocumentApi documentApiMock;
 
+    private AutoCloseable mocks;
+
     @BeforeAll
     public void setup() throws ApiException {
-        MockitoAnnotations.initMocks(this);
+        mocks = MockitoAnnotations.openMocks(this);
 
         VipsDocumentOrdsResponse successResponse = new VipsDocumentOrdsResponse();
         successResponse.setDocumentId(DOCUMENT_ID);
@@ -55,6 +58,11 @@ public class DocumentServiceImplTest {
         Mockito.when(documentApiMock.storeDocumentPost(Mockito.eq(TYPE_CODE_EXCEPTION), Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.any(), Mockito.anyString(), Mockito.anyString(), Mockito.anyInt())).thenThrow(new ApiException(API_EXCEPTION));
 
         sut = new DocumentServiceImpl(documentApiMock);
+    }
+
+    @AfterAll
+    public void tearDown() throws Exception {
+        mocks.close();
     }
 
     @Test

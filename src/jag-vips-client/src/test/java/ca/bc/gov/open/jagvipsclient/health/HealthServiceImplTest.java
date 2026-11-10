@@ -3,6 +3,7 @@ package ca.bc.gov.open.jagvipsclient.health;
 import ca.bc.gov.open.jag.ordsvipsclient.api.HealthApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.HealthOrdsResponse;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -26,11 +27,18 @@ public class HealthServiceImplTest {
     @Mock
     private HealthApi healthApiMock;
 
+    private AutoCloseable mocks;
+
     @BeforeAll
     public void setup() throws ApiException {
-        MockitoAnnotations.initMocks(this);
+        mocks = MockitoAnnotations.openMocks(this);
 
         sut = new HealthServiceImpl(healthApiMock);
+    }
+
+    @AfterAll
+    public void tearDown() throws Exception {
+        mocks.close();
     }
 
     @Test

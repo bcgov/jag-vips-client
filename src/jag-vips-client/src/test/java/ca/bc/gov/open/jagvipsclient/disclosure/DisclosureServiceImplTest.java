@@ -12,6 +12,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -48,9 +49,11 @@ public class DisclosureServiceImplTest {
 	@Mock
 	private DisclosureApi disclosureApi;
 
+	private AutoCloseable mocks;
+
 	@BeforeAll
 	public void setup() throws ApiException {
-		MockitoAnnotations.initMocks(this);
+		mocks = MockitoAnnotations.openMocks(this);
 
 		VipsDisclosureSentOrdsResponse disclosureResponse = new VipsDisclosureSentOrdsResponse();
 		disclosureResponse.setUpdDtm("2019-01-02 17:30:00 -08:00");
@@ -69,6 +72,11 @@ public class DisclosureServiceImplTest {
 				.thenThrow(new ApiException(ERROR_RESPONSE));
 
 		service = new DisclosureServiceImpl(disclosureApi);
+	}
+
+	@AfterAll
+	public void tearDown() throws Exception {
+		mocks.close();
 	}
 
 	@Test

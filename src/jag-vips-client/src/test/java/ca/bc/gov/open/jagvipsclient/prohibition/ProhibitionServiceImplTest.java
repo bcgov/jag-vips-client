@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -38,9 +39,11 @@ public class ProhibitionServiceImplTest {
 	@Mock
 	private ProhibitionStatusApi prohibitionApiMock;
 
+	private AutoCloseable mocks;
+
 	@BeforeAll
 	public void setup() throws ApiException {
-		MockitoAnnotations.initMocks(this);
+		mocks = MockitoAnnotations.openMocks(this);
 
 		List<VipsProhibitionStatusOrdsResponseDisclosureInner> disclosureList = new ArrayList<>();
 		VipsProhibitionStatusOrdsResponseDisclosureInner disclosure = new VipsProhibitionStatusOrdsResponseDisclosureInner();
@@ -72,6 +75,11 @@ public class ProhibitionServiceImplTest {
 				.thenThrow(new ApiException(ERROR_RESPONSE));
 
 		service = new ProhibitionServiceImpl(prohibitionApiMock);
+	}
+
+	@AfterAll
+	public void tearDown() throws Exception {
+		mocks.close();
 	}
 
 	@Test

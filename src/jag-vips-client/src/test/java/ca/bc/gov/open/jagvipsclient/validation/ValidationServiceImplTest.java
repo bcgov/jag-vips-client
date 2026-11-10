@@ -4,6 +4,7 @@ import ca.bc.gov.open.jag.ordsvipsclient.api.ValidationApi;
 import ca.bc.gov.open.jag.ordsvipsclient.api.handler.ApiException;
 import ca.bc.gov.open.jag.ordsvipsclient.api.model.VipsValidationOrdsResponse;
 import ca.bc.gov.open.jagvipsclient.VipsOrdsClientConstants;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,9 +35,11 @@ public class ValidationServiceImplTest {
 	@Mock
 	private ValidationApi validationApiMock;
 
+	private AutoCloseable mocks;
+
 	@BeforeAll
 	public void setup() throws ApiException {
-		MockitoAnnotations.initMocks(this);
+		mocks = MockitoAnnotations.openMocks(this);
 
 		VipsValidationOrdsResponse validationOrdsResponse = new VipsValidationOrdsResponse();
 		validationOrdsResponse.setStatusCode(String.valueOf(VipsOrdsClientConstants.SERVICE_SUCCESS_CD));
@@ -57,6 +60,11 @@ public class ValidationServiceImplTest {
 				.thenThrow(new ApiException(ERROR_RESPONSE));
 
 		service = new ValidationServiceImpl(validationApiMock);
+	}
+
+	@AfterAll
+	public void tearDown() throws Exception {
+		mocks.close();
 	}
 
 	@Test
